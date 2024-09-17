@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CoinScript : MonoBehaviour
 {
     private AudioSource audioSource;
+
     void Start()
     {
         audioSource = GameObject.Find("AudioManager").GetComponent<AudioSource>();
@@ -15,9 +15,15 @@ public class CoinScript : MonoBehaviour
         transform.Rotate(Vector3.forward, 180 * Time.deltaTime);
     }
 
-    public void OnTriggerEnter(Collider other){
-        if (other.CompareTag("Player")){
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Player entered the trigger.");
             audioSource.PlayOneShot(audioSource.clip);
+            
+            GameManager.instance.AddScore(1);
+            
             Destroy(gameObject);
         }
     }
