@@ -17,7 +17,7 @@ public class CoinScript : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && GameManager.instance.isGameActive)
         {
             Debug.Log("Player entered the trigger.");
             audioSource.PlayOneShot(audioSource.clip);

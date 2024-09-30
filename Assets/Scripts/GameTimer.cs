@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -36,6 +34,9 @@ public class GameTimer : MonoBehaviour
                 isTimerRunning = false;
                 countdownText.text = "00:00";
                 Debug.Log("Countdown finished!");
+
+                // Stop the game when the timer runs out
+                GameManager.instance.EndGame();
             }
         }
     }
